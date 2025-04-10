@@ -40,6 +40,6 @@ module.exports = {
       inject: 'body', // инжектит скрипты в тело страницы
     }),
   ],
-  mode: process.env.NODE_ENV || 'development', // режим разработки или production
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development', // режим разработки или production
   devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'eval-source-map', // для дебага в production
 };
