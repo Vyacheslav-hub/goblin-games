@@ -1,0 +1,22 @@
+version: 1.0.{build}
+image: Visual Studio 2022
+
+# Пример конфигурации для Node.js проекта с использованием Webpack
+build_script:
+  - npm install
+  - npm run build # Запускаем сборку проекта через Webpack
+
+# Деплой на GitHub Pages
+after_build:
+  - ps: |
+      $ErrorActionPreference = "Stop"
+      $commitMessage = "Build $($env:APPVEYOR_BUILD_NUMBER)"
+      git config --global user.email "your-email@example.com"
+      git config --global user.name "Appveyor CI"
+      git clone --branch gh-pages https://github.com/Vyacheslav-hub/goblin-games.git gh-pages || git clone https://github.com/Vyacheslav-hub/goblin-games.git gh-pages
+      cd gh-pages
+      rm -rf *
+      cp -r ../dist/* .
+      git add .
+      git commit -m $commitMessage
+      git push origin gh-pages

@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
-    "start": "webpack serve",
+    "start": "webpack serve --mode development --open",
     "build": "webpack",
     "lint": "eslint ."
   },
@@ -24,9 +24,9 @@
     "style-loader": "^4.0.0",
     "webpack": "^5.99.5",
     "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.1"
+    "webpack-dev-server": "^5.2.1",
+    "file-loader": "^6.2.0",
+    "url-loader": "^4.1.1"
   },
-  "dependencies": {
-    "core-js": "^3.41.0"
-  }
+  "dependencies": {}
 }

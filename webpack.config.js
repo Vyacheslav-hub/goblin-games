@@ -7,6 +7,7 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true, // очищает dist перед каждой сборкой
+    publicPath: process.env.NODE_ENV === 'production' ? '/goblin-games/' : '/', // для GitHub Pages
   },
   devServer: {
     static: {
@@ -39,5 +40,6 @@ module.exports = {
       inject: 'body', // инжектит скрипты в тело страницы
     }),
   ],
-  mode: 'development', // режим разработки
+  mode: process.env.NODE_ENV || 'development', // режим разработки или production
+  devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'eval-source-map', // для дебага в production
 };
