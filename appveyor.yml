@@ -1,0 +1,15 @@
+image: Visual Studio 2022
+
+build_script:
+  - npm install
+  - npm run build
+
+artifacts:
+  - path: dist
+    name: dist
+
+deploy:
+  provider: GitHubPages
+  artifact: dist
+  on:
+    branch: main
